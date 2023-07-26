@@ -26,7 +26,7 @@ router.post('/', async (req, res, next)=>{
     }
     Pixel.insertMany(pixelList)
     .then(function(){
-        console.log("inserted");
+        // console.log("inserted");
     }).catch(function(error){
         console.log(error);
     })
@@ -50,8 +50,8 @@ router.delete('/delete', async(req, res, next)=>{
 
 router.put('/:id', async(req, res, next)=>{
     const {color} = req.body;
-    console.log(req.params.id);
-    console.log(color);
+    // console.log(req.params.id);
+    // console.log(color);
     const pixelToChange = await Pixel.findOneAndUpdate({id: req.params.id}, {color: color});   
     return res.status(200).json({
         statusCode: 200,

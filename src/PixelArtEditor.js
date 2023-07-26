@@ -28,10 +28,10 @@ export default function PixelArtEditor() {
             },
         }).then(response => response.json())
             .then(data => {
-                console.log(data.data.pixels.length);
-                for (let i = 0; i < data.data.pixels.length; i++) {
-                    console.log(data.data.pixels[i].color);
-                }
+                // console.log(data.data.pixels.length);
+                // for (let i = 0; i < data.data.pixels.length; i++) {
+                //     console.log(data.data.pixels[i].color);
+                // }
                 // console.log(data.data.pixels[0].color)
                 for (let i = 0; i < 20; i++) {
                     for (let j = 0; j < 40; j++){
@@ -44,9 +44,9 @@ export default function PixelArtEditor() {
                 for (let i = 0; i < height; i++) {
                     loadedState[i] = { key: i, index: i, width: width, selectedColor: initialColors[i], chosenColor: chosenColor, columnNumber: 0 }
                 }
-                console.log(loadedState);
+                // console.log(loadedState);
                 setRowData(loadedState);
-                console.log(rowData);
+                // console.log(rowData);
 
                 // setRowData(initialState);
             })
@@ -76,7 +76,7 @@ export default function PixelArtEditor() {
         // console.log("rendering");
         socket.on('drawing', (data) => {
             console.log('Successfully drawn!');
-            console.log(rowData);
+            // console.log(rowData);
             drawPicture(data);
         });
         return () => socket.off('drawing')
@@ -100,27 +100,21 @@ export default function PixelArtEditor() {
     //     console.log("Mounted")
     // }, [])
     const colorUpdate = (e) => {
-        console.log(rowData);
-        changeColor(e.target.className.split(' ')[1]);
+        // console.log(rowData);
+        // changeColor(e.target.className.split(' ')[1]);
     };
     // const initialState = [];
-    useEffect( () => {
 
-            console.log("Fasdnfkasj")
-
-
-
-    }, [])
     useEffect(()=>{
         socket.on('drawing', (data) => {
             console.log('Successfully drawn!');
-            console.log(rowData);
+            // console.log(rowData);
             drawPicture(data);
         });
         return () => socket.off('drawing')
     }, [rowData])
 
-    console.log(rowData);
+    // console.log(rowData);
     // console.log(initialColors)
     // for (let i = 0; i < height; i++) {
     //     initialState[i] = { key: i, index: i, width: width, selectedColor: "#FFFF00", chosenColor: chosenColor, columnNumber: 0 }
@@ -142,12 +136,12 @@ export default function PixelArtEditor() {
         const rowNum = data[0];
         // console.log(typeof (rowNum));
         // console.log(typeof(5));
-        console.log(chosenColor);
-        console.log(updatedRowData);
-        console.log(rowNum);
+        // console.log(chosenColor);
+        // console.log(updatedRowData);
+        // console.log(rowNum);
         updatedRowData[rowNum].selectedColor[data[1]] = data[2];
         updatedRowData[rowNum].columnNumber = data[1];
-        console.log(updatedRowData[rowNum].selectedColor);
+        // console.log(updatedRowData[rowNum].selectedColor);
 
         // console.log(updatedRowData);
         // console.log(data[0]);
